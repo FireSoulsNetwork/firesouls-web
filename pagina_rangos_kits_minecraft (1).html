@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FireSouls Network - Tienda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(to right, #1a1a1a, #000000);
+      color: #fff;
+    }
+    .welcome-screen {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+    }
+    .welcome-screen img {
+      width: 300px;
+      margin-bottom: 20px;
+    }
+    .welcome-screen h2 {
+      font-size: 3em;
+      font-family: 'Great Vibes', cursive;
+      margin-bottom: 20px;
+      color: #ff4500;
+      text-shadow: 0 0 20px #ff4500;
+    }
+    .welcome-screen button {
+      padding: 12px 24px;
+      font-size: 1.2em;
+      background: #ff4500;
+      border: none;
+      border-radius: 6px;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+    .sidebar {
+      width: 250px;
+      background: #111;
+      padding: 20px;
+      border-right: 2px solid #b22222;
+    }
+    .sidebar h3 {
+      color: #ff4500;
+      margin-bottom: 15px;
+    }
+    .sidebar button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      background: #222;
+      border: 2px solid #ff4500;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .sidebar button:hover {
+      background: #ff4500;
+      color: #000;
+    }
+    .main {
+      flex-grow: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+    .section-title {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #ff4500;
+    }
+    .card {
+      background: #1c1c1c;
+      border: 2px solid #ff4500;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+    }
+    .card h4 {
+      margin-top: 0;
+      color: #ff9900;
+    }
+    .card p {
+      color: #ccc;
+    }
+    .card button {
+      margin-top: 10px;
+      background: #ff4500;
+      border: none;
+      color: #000;
+      padding: 10px;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .card button:hover {
+      background: #e03e00;
+    }
+  </style>
+</head>
+<body>
+
+<div class="welcome-screen" id="welcome">
+  <img src="firesouls_logo.png" alt="FireSouls Logo">
+  <h2>Bienvenido a FireSouls Network</h2>
+  <button onclick="entrar()">Entrar</button>
+</div>
+
+<div class="container" id="app" style="display:none;">
+  <div class="sidebar">
+    <h3>Selecciona una categoría</h3>
+    <button onclick="mostrar('rangos')">🏅 Rangos</button>
+    <button onclick="mostrar('kits')">🎒 Kits</button>
+    <button onclick="mostrar('combo')">🔥 Combo Exclusivo</button>
+  </div>
+  <div class="main">
+    <div id="rangos" class="seccion">
+      <div class="section-title">🔥 Rangos Disponibles</div>
+      <div class="card">
+        <h4>Rango Infernal</h4>
+        <p>Acceso a kits exclusivos, fly y más.</p>
+        <button>Comprar</button>
+      </div>
+      <div class="card">
+        <h4>Rango Legendario</h4>
+        <p>Todo el poder para dominar FireSouls.</p>
+        <button>Comprar</button>
+      </div>
+    </div>
+
+    <div id="kits" class="seccion" style="display:none;">
+      <div class="section-title">🎒 Kits Especiales</div>
+      <div class="card">
+        <h4>Kit Guerrero</h4>
+        <p>Armadura de diamante y armas mejoradas.</p>
+        <button>Reclamar</button>
+      </div>
+      <div class="card">
+        <h4>Kit Constructor</h4>
+        <p>Bloques, herramientas y materiales avanzados.</p>
+        <button>Reclamar</button>
+      </div>
+    </div>
+
+    <div id="combo" class="seccion" style="display:none;">
+      <div class="section-title">🔥 Combo Exclusivo</div>
+      <div class="card">
+        <h4>Combo Infernal + Kit Guerrero</h4>
+        <p>Obtén el Rango Infernal y el Kit Guerrero en un solo paquete a precio reducido.</p>
+        <button>Adquirir Combo</button>
+      </div>
+      <div class="card">
+        <h4>Combo Legendario + Kit Constructor</h4>
+        <p>Todo lo necesario para construir y dominar FireSouls, con poderes legendarios.</p>
+        <button>Adquirir Combo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function entrar() {
+    document.getElementById('welcome').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+  }
+  function mostrar(seccion) {
+    document.querySelectorAll('.seccion').forEach(s => s.style.display = 'none');
+    document.getElementById(seccion).style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
